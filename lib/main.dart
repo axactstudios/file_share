@@ -24,10 +24,15 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+Color componentsColor = Color(0xFFEFF8E2);
+Color backgroundColor = Color(0xFFFDFFFC);
+
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: backgroundColor,
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: BoxDecoration(
@@ -41,24 +46,102 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         title: Text(
           'Share',
-          style: TextStyle(fontSize: 28, fontFamily: 'k2d'),
+          style: TextStyle(
+              fontSize: 28, fontFamily: 'k2d', color: backgroundColor),
         ),
       ),
       body: Container(
-        color: Color(0xFFFDFFFC),
+        padding: EdgeInsets.all(20),
+        color: backgroundColor,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[sendButton(), recieveButton()],
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                sendButton(width),
+                recieveButton(width),
+              ],
+            ),
+          ],
         ),
       ),
     );
   }
 
-  Widget sendButton() {
-    return Container();
+  Widget sendButton(double width) {
+    return Container(
+      width: (width - 40) / 2.3,
+      height: width / 3,
+      decoration: BoxDecoration(
+        color: componentsColor,
+        borderRadius: BorderRadius.all(
+          Radius.circular(10),
+        ),
+        boxShadow: [
+          BoxShadow(
+              blurRadius: 15,
+              spreadRadius: 3,
+              offset: Offset.zero,
+              color: Colors.grey.withOpacity(0.4))
+        ],
+      ),
+      child: Column(
+        children: <Widget>[
+          SizedBox(
+            height: width / 30,
+          ),
+          Text(
+            'Send Files',
+            style: TextStyle(fontFamily: 'k2d', fontSize: width / 17),
+          ),
+          SizedBox(
+            height: width / 30,
+          ),
+          Icon(
+            Icons.send,
+            size: width / 7,
+          )
+        ],
+      ),
+    );
   }
 
-  Widget recieveButton() {
-    return Container();
+  Widget recieveButton(double width) {
+    return Container(
+      width: (width - 40) / 2.3,
+      height: width / 3,
+      decoration: BoxDecoration(
+        color: componentsColor,
+        borderRadius: BorderRadius.all(
+          Radius.circular(10),
+        ),
+        boxShadow: [
+          BoxShadow(
+              blurRadius: 15,
+              spreadRadius: 3,
+              offset: Offset.zero,
+              color: Colors.grey.withOpacity(0.4))
+        ],
+      ),
+      child: Column(
+        children: <Widget>[
+          SizedBox(
+            height: width / 30,
+          ),
+          Text(
+            'Recieve Files',
+            style: TextStyle(fontFamily: 'k2d', fontSize: width / 17),
+          ),
+          SizedBox(
+            height: width / 30,
+          ),
+          Icon(
+            Icons.file_download,
+            size: width / 7,
+          )
+        ],
+      ),
+    );
   }
 }
