@@ -13,15 +13,15 @@ abstract class DB {
     }
 
     try {
-      String _path = await getDatabasesPath() + 'share';
+      String _path = await getDatabasesPath() + 'example';
       _db = await openDatabase(_path, version: _version, onCreate: onCreate);
     } catch (ex) {
       print(ex);
     }
   }
 
-  static void onCreate(Database db, int version) async => await db.execute(
-      'CREATE TABLE user_name (userName STRING NOT NULL, complete BOOLEAN)');
+  static void onCreate(Database db, int version) async =>
+      await db.execute('CREATE TABLE user_names (userName STRING NOT NULL)');
 
   static Future<List<Map<String, dynamic>>> query(String table) async =>
       _db.query(table);

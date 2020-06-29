@@ -1,4 +1,5 @@
 import 'package:fileshare/services/db.dart';
+import 'package:fileshare/welcome.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: MyHomePage(),
+      home: Welcome(),
     );
   }
 }
