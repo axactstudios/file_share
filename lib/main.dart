@@ -1,6 +1,10 @@
+import 'package:fileshare/services/db.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await DB.init();
   runApp(MyApp());
 }
 
@@ -16,10 +20,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({
-    Key key,
-  }) : super(key: key);
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
